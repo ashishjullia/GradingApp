@@ -84,7 +84,7 @@ public class GradeEntry extends Fragment {
         buttonSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                db = SQLiteDatabase.ope();
+
             } });
 
         // Inflate the layout for this fragment
