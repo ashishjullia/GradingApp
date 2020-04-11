@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -15,14 +16,24 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Button;
 
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+
 public class GradeEntry extends Fragment {
 
-    String stringCredit, stringCourse, stringFirstName, stringLastName, stringMarks;
+    String stringCredit, stringFirstName, stringLastName, stringMarks, StringTheCourse;
 
     EditText firstName, lastName, marks;
-    RadioGroup groupCredits;
-    RadioButton buttonCreditOne, buttonCreditTwo, buttonCreditThree, buttonCreditFour, buttonCourseOne, buttonCourseTwo, buttonCourseThree, buttonCourseFour;
+    RadioButton buttonCreditOne, buttonCreditTwo, buttonCreditThree, buttonCreditFour;
     Button buttonSubmit;
+
+    SQLiteDatabase db;
+
+    //View view;
+    private ListView lstViewCourses;
+    private ArrayAdapter<String> adptCourses;
+    private String[] courses = {"PROG 8480", "PROG 8470", "PROG 8460", "PROG 8450"};
 
     public GradeEntry() {
         // Required empty public constructor
@@ -33,7 +44,19 @@ public class GradeEntry extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_grade_entry, container, false);
 
+        lstViewCourses = view.findViewById(R.id.listCourses);
+        adptCourses = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, courses);
+        lstViewCourses.setAdapter(adptCourses);
+
+        lstViewCourses.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> a, View v, int position, long id) {
+                StringTheCourse = lstViewCourses.getItemAtPosition(position).toString();
+            }
+        });
+
         firstName = view.findViewById(R.id.editFirstName);
+        firstName.requestFocus();
         lastName = view.findViewById(R.id.editLastName);
         marks = view.findViewById(R.id.editMarks);
 
@@ -42,26 +65,11 @@ public class GradeEntry extends Fragment {
         buttonCreditThree = view.findViewById(R.id.radioButtonCreditThree);
         buttonCreditFour = view.findViewById(R.id.radioButtonCreditFour);
 
-        buttonCourseOne = view.findViewById(R.id.radioButtonCourseOne);
-        buttonCourseTwo = view.findViewById(R.id.radioButtonCourseTwo);
-        buttonCourseThree = view.findViewById(R.id.radioButtonCourseThree);
-        buttonCourseFour = view.findViewById(R.id.radioButtonCourseFour);
-
         buttonSubmit = view.findViewById(R.id.btnSubmit);
 
         stringFirstName = firstName.getText().toString();
         stringLastName = lastName.getText().toString();
         stringMarks = marks.getText().toString();
-
-        if (buttonCourseOne.isChecked()) {
-            stringCourse = buttonCourseOne.getText().toString();
-        } else if (buttonCourseTwo.isChecked()) {
-            stringCourse = buttonCourseTwo.getText().toString();
-        } else if (buttonCourseThree.isChecked()) {
-            stringCourse = buttonCourseThree.getText().toString();
-        } else if (buttonCourseFour.isChecked()) {
-            stringCourse = buttonCourseFour.getText().toString();
-        }
 
         if (buttonCreditOne.isChecked()) {
             stringCredit = buttonCreditOne.getText().toString();
@@ -76,7 +84,7 @@ public class GradeEntry extends Fragment {
         buttonSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+                db = SQLiteDatabase.ope();
             } });
 
         // Inflate the layout for this fragment

@@ -74,35 +74,10 @@
                 android:layout_weight="1"
                 android:text="Courses" />
 
-            <RadioGroup
-                android:id="@+id/radioGroupCourse"
-                android:layout_width="283dp"
-                android:layout_height="171dp" >
-
-                <RadioButton
-                    android:id="@+id/radioButtonCourseOne"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="PROG 8480" />
-
-                <RadioButton
-                    android:id="@+id/radioButtonCourseTwo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="PROG 8470" />
-
-                <RadioButton
-                    android:id="@+id/radioButtonCourseThree"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="PROG 8460" />
-
-                <RadioButton
-                    android:id="@+id/radioButtonCourseFour"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="PROG 8450" />
-            </RadioGroup>
+            <ListView
+                android:id="@+id/listCourses"
+                android:layout_width="280dp"
+                android:layout_height="100dp" />
 
         </LinearLayout>
 
