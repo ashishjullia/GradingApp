@@ -103,4 +103,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         int numRows = db.update(TABLE_NAME, contentValues, "id=" + objGrade.getGradeId(), null);
         return  numRows;
     }
+
+    public Cursor searchGrade(String col, String val) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor;
+        cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " +  col + " = \"" + val + "\"", null);
+
+        return cursor;
+    }
 }
