@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
         FragmentManager mgr  = getSupportFragmentManager();
         FragmentTransaction  trans = mgr.beginTransaction();
-        trans.replace(R.id.frame, new GradeEntry());
+        trans.replace(R.id.frame, new ViewGrades());
         trans.commit();
     }
 
@@ -59,13 +59,13 @@ public class MainActivity extends AppCompatActivity {
                 if (itemId == R.id.nav_grade_entry) {
                     frag = new GradeEntry();
                 } else if (itemId == R.id.nav_view_grades) {
-                    //frag = new ViewGrades();
+                    frag = new ViewGrades();
                 } else if (itemId == R.id.nav_search) {
-                    //frag = new Search();
+                    frag = new Search();
                 } else if (itemId == R.id.nav_update) {
-                    //frag = new Update();
+                    frag = new Update();
                 } else if (itemId == R.id.nav_delete) {
-                    //frag = new Delete();
+                    frag = new Delete();
                 }
 
                 if (frag != null) {

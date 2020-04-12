@@ -1,10 +1,13 @@
 <resources>
-<string name="app_name">GradingApp</string>
-<string name="grade_entry">Grade Entry</string>
-<string name="open">Open</string>
-<string name="close">Close</string>
-<string name="view_grades">View Grades</string>
-<string name="search">Search</string>
-<string name="update">Update</string>
-<string name="delete">Delete</string>
+    <string name="app_name">GradingApp</string>
+    <string name="grade_entry">Grade Entry</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="view_grades">View Grades</string>
+    <string name="search">Search</string>
+    <string name="update">Update</string>
+    <string name="delete">Delete</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

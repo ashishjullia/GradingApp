@@ -7,30 +7,22 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Button;
 
-import android.content.Context;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 
 public class GradeEntry extends Fragment {
 
-    String stringCredit, stringFirstName, stringLastName, stringMarks, StringTheCourse;
+    private String stringCredit, stringFirstName, stringLastName, stringMarks, StringTheCourse;
 
-    EditText firstName, lastName, marks;
-    RadioButton buttonCreditOne, buttonCreditTwo, buttonCreditThree, buttonCreditFour;
-    Button buttonSubmit;
+    private EditText firstName, lastName, marks;
+    private RadioButton buttonCreditOne, buttonCreditTwo, buttonCreditThree, buttonCreditFour;
+    private Button buttonSubmit;
 
-    SQLiteDatabase db;
-
-    //View view;
     private ListView lstViewCourses;
     private ArrayAdapter<String> adptCourses;
     private String[] courses = {"PROG 8480", "PROG 8470", "PROG 8460", "PROG 8450"};
