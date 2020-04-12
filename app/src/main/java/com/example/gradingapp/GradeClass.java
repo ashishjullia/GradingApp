@@ -14,8 +14,8 @@ public class GradeClass {
     public GradeClass () {}
 
     // Parameterized Constructor
-    public GradeClass (int id, String firstName, String lastName, String course, String credits, String marks) {
-        this.id = id;
+    public GradeClass (String firstName, String lastName, String course, String credits, String marks) {
+        //this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.course = course;

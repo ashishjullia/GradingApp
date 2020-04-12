@@ -13,11 +13,12 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.Button;
+import android.widget.Toast;
 
 
 public class GradeEntry extends Fragment {
 
-    private String stringCredit, stringFirstName, stringLastName, stringMarks, StringTheCourse;
+    private String stringCredit, stringFirstName, stringLastName, stringMarks, stringTheCourse;
 
     private EditText firstName, lastName, marks;
     private RadioButton buttonCreditOne, buttonCreditTwo, buttonCreditThree, buttonCreditFour;
@@ -26,6 +27,9 @@ public class GradeEntry extends Fragment {
     private ListView lstViewCourses;
     private ArrayAdapter<String> adptCourses;
     private String[] courses = {"PROG 8480", "PROG 8470", "PROG 8460", "PROG 8450"};
+
+    Boolean insertResult;
+    DatabaseHelper dbh;
 
     public GradeEntry() {
         // Required empty public constructor
@@ -43,7 +47,7 @@ public class GradeEntry extends Fragment {
         lstViewCourses.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> a, View v, int position, long id) {
-                StringTheCourse = lstViewCourses.getItemAtPosition(position).toString();
+                stringTheCourse = lstViewCourses.getItemAtPosition(position).toString();
             }
         });
 
@@ -59,25 +63,36 @@ public class GradeEntry extends Fragment {
 
         buttonSubmit = view.findViewById(R.id.btnSubmit);
 
-        stringFirstName = firstName.getText().toString();
-        stringLastName = lastName.getText().toString();
-        stringMarks = marks.getText().toString();
-
-        if (buttonCreditOne.isChecked()) {
-            stringCredit = buttonCreditOne.getText().toString();
-        } else if (buttonCreditTwo.isChecked()) {
-            stringCredit = buttonCreditTwo.getText().toString();
-        } else if (buttonCreditThree.isChecked()) {
-            stringCredit = buttonCreditThree.getText().toString();
-        } else if (buttonCreditFour.isChecked()) {
-            stringCredit = buttonCreditFour.getText().toString();
-        }
+        dbh = new DatabaseHelper(getActivity());
 
         buttonSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-            } });
+                stringFirstName = firstName.getText().toString();
+                stringLastName = lastName.getText().toString();
+                stringMarks = marks.getText().toString();
+
+                if (buttonCreditOne.isChecked()) {
+                    stringCredit = buttonCreditOne.getText().toString();
+                } else if (buttonCreditTwo.isChecked()) {
+                    stringCredit = buttonCreditTwo.getText().toString();
+                } else if (buttonCreditThree.isChecked()) {
+                    stringCredit = buttonCreditThree.getText().toString();
+                } else if (buttonCreditFour.isChecked()) {
+                    stringCredit = buttonCreditFour.getText().toString();
+                }
+
+                GradeClass grade = new GradeClass(stringFirstName, stringLastName, stringTheCourse, stringCredit, stringMarks);
+                insertResult = dbh.insertGrade(grade);
+
+                if (insertResult) {
+                    Toast.makeText(getActivity(), "Record Added!", Toast.LENGTH_SHORT).show();
+                } else if (!insertResult) {
+                    Toast.makeText(getActivity(), "Record not Added!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
         // Inflate the layout for this fragment
         return view;
