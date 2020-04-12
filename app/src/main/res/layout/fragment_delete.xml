@@ -2,5 +2,60 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Delete"/>
+    android:layout_height="wrap_content"
+    tools:context=".Delete">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Search a Record by Id and Delete it" />
+
+        <LinearLayout
+            android:id="@+id/linearLayoutSearchByIdDelete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/editSearchIdDelete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="" />
+
+            <Button
+                android:id="@+id/btnSearchIdDelete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Search   (by Id)" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutDelete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textViewResultRecordSearchForDelete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Following is the record you want to delete." />
+
+            <include layout="@layout/record_layout"></include>
+
+            <Button
+                android:id="@+id/btnDelete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Delete Record" />
+        </LinearLayout>
+
+    </LinearLayout>
+</FrameLayout>
