@@ -24,22 +24,22 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Creating a fragment and getting support for the fragment manager
         FragmentManager mgr  = getSupportFragmentManager();
         FragmentTransaction  trans = mgr.beginTransaction();
         trans.replace(R.id.frame, new ViewGrades());
         trans.commit();
 
-        // Drawer  and toggle
+        // Navigation Drawer  and toggle
         mDrawerLayout = findViewById(R.id.drawer_layout);
         mToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.open, R.string.close);
         mDrawerLayout.addDrawerListener(mToggle);
         mToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setNavigationDrawer();
-
-
     }
 
+    // In order to get the drawer functionality
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (mToggle.onOptionsItemSelected(item)) {
@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    // Logic for the navigation drawer to select different fragments based on the different menus from drawer
     public void setNavigationDrawer() {
         NavigationView navView = findViewById(R.id.nav_view);
 
@@ -70,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
                     frag = new Delete();
                 }
 
+                // setting/replacing the selected fragment
                 if (frag != null) {
                     FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.frame, frag);

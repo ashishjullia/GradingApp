@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 public class GradeEntry extends Fragment {
 
+    // Variables based on primitive and complex datatypes;
     private String stringCredit, stringFirstName, stringLastName, stringMarks, stringTheCourse;
 
     private EditText firstName, lastName, marks;
@@ -40,6 +41,7 @@ public class GradeEntry extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_grade_entry, container, false);
 
+        // Grabbing the views by using id's
         lstViewCourses = view.findViewById(R.id.listCourses);
         adptCourses = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, courses);
         lstViewCourses.setAdapter(adptCourses);
@@ -65,6 +67,7 @@ public class GradeEntry extends Fragment {
 
         dbh = new DatabaseHelper(getActivity());
 
+        // Logic for inserting a record in datbase
         buttonSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
