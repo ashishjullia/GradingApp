@@ -24,6 +24,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        FragmentManager mgr  = getSupportFragmentManager();
+        FragmentTransaction  trans = mgr.beginTransaction();
+        trans.replace(R.id.frame, new ViewGrades());
+        trans.commit();
+
         // Drawer  and toggle
         mDrawerLayout = findViewById(R.id.drawer_layout);
         mToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.open, R.string.close);
@@ -32,10 +37,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setNavigationDrawer();
 
-        FragmentManager mgr  = getSupportFragmentManager();
-        FragmentTransaction  trans = mgr.beginTransaction();
-        trans.replace(R.id.frame, new ViewGrades());
-        trans.commit();
+
     }
 
     @Override
